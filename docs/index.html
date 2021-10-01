@@ -78,6 +78,9 @@
 		#mint-buttons .btn { 
 			height:3.6em; 
 		}
+		#mint-result { 
+			margin-top:1em; 
+		}
 	</style>
 </head>
 
@@ -114,7 +117,7 @@
 		<a href="#" id="mint-two" class="btn btn-success">Mint 2<br><span>0.02 ETH</span></a>
 		<a href="#" id="mint-three" class="btn btn-success">Mint 3<br><span>0.03 ETH</span></a>
 	</div>
-	<div id="mint-result" style="display:none">&nbsp;</div>
+	<p id="mint-result" style="display:none">&nbsp;</p>
   </div>
   
   <div id="complete" style="display:none">
@@ -173,6 +176,7 @@
 	}
 	
 	async function mintOne() { 
+		showMintLoading(); 
 		contract.methods.mintOne().send({"from":account,"value":20000000000000000}) // 0.01 ETH
 		.then(function(result){
 			showMintResult("Mint processing, check progress on <a target='_blank' href='https://etherscan.io/tx/"+result['transactionHash']+"'>Etherscan</a>!"); 
@@ -183,6 +187,7 @@
 	}
 	
 	async function mintTwo() { 
+		showMintLoading(); 
 		contract.methods.mintTwo().send({"from":account,"value":20000000000000000}) // 0.02 ETH
 		.then(function(result){
 			showMintResult("Mint processing, check progress on <a target='_blank' href='https://etherscan.io/tx/"+result['transactionHash']+"'>Etherscan</a>!"); 
@@ -193,6 +198,7 @@
 	}
 	
 	async function mintThree() { 
+		showMintLoading(); 
 		contract.methods.mintThree().send({"from":account,"value":30000000000000000}) // 0.03 ETH
 		.then(function(result){
 			showMintResult("Mint processing, check progress on <a target='_blank' href='https://etherscan.io/tx/"+result['transactionHash']+"'>Etherscan</a>!"); 
@@ -203,13 +209,13 @@
 	}
 	
 	function showMintResult(outcome) { 
-		document.getElementById('mint-result').textContent = ''+outcome; 
+		document.getElementById('mint-result').innerHTML = ''+outcome; 
 		document.getElementById('mint-buttons').style.display = 'none'; 
 		document.getElementById('mint-result').style.display = 'block'; 
 	}
 	
-	function showMintResult(outcome) { 
-		document.getElementById('mint-result').textContent = ''+outcome; 
+	function showMintError(outcome) { 
+		document.getElementById('mint-result').innerHTML = ''+outcome; 
 		document.getElementById('mint-result').style.display = 'block'; 
 	}
   </script>
