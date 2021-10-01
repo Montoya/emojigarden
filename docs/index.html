@@ -208,6 +208,11 @@
 		}); 
 	}
 	
+	function showMintLoading() { 
+		document.getElementById('mint-result').style.display = 'block'; 
+		document.getElementById('mint-result').textContent = "Loading..."; 
+	}
+	
 	function showMintResult(outcome) { 
 		document.getElementById('mint-result').innerHTML = ''+outcome; 
 		document.getElementById('mint-buttons').style.display = 'none'; 
