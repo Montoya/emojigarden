@@ -108,7 +108,7 @@
   </div>
   
   <div id="mintable" style="display:none">
-	<p><span id="totalSupply">0</span> of 4,420 minted so far</p>
+	<p><span id="total-minted">0</span> of 4,420 minted so far</p>
 	<div id="mint-buttons">
 		<a href="#" id="mint-one" class="btn btn-success">Mint 1<br><span>0.01 ETH</span></a>
 		<a href="#" id="mint-two" class="btn btn-success">Mint 2<br><span>0.02 ETH</span></a>
@@ -148,14 +148,15 @@
 		document.getElementById('connect').style.display = 'none'; 
 		const totalMinted = await contract.methods.totalSupply().call(); 
 		if(totalMinted < 4420) { 
-			enableMinting(); 
+			enableMinting(totalMinted); 
 		}
 		else { 
 			document.getElementById('complete').style.display = 'flex'; 
 		}
 	}
 	
-	function enableMinting() { 
+	function enableMinting(totalMinted) { 
+		document.getElementById('total-minted').textContent = totalMinted; 
 		document.getElementById('mintable').style.display = 'flex'; 
 		document.getElementById('mint-one').addEventListener('click', function(evt) { 
 			evt.preventDefault();
