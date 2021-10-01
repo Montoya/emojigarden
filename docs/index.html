@@ -83,6 +83,7 @@
 		}
 		#mint-result a, #mint-result a:link { 
 			color:#fff; 
+			text-decoration:underline; 
 		}
 	</style>
 </head>
@@ -191,7 +192,7 @@
 	
 	async function mintTwo() { 
 		showMintLoading(); 
-		contract.methods.mintTwo().send({"from":account,"value":20000000000000000}) // 0.02 ETH
+		contract.methods.mintTwo().send({"from":account,"value":50000000000000000}) // 0.02 ETH
 		.then(function(result){
 			showMintResult("Mint processing, check progress on <a target='_blank' href='https://etherscan.io/tx/"+result['transactionHash']+"'>Etherscan</a>!"); 
 		})
@@ -202,7 +203,7 @@
 	
 	async function mintThree() { 
 		showMintLoading(); 
-		contract.methods.mintThree().send({"from":account,"value":30000000000000000}) // 0.03 ETH
+		contract.methods.mintThree().send({"from":account,"value":80000000000000000}) // 0.03 ETH
 		.then(function(result){
 			showMintResult("Mint processing, check progress on <a target='_blank' href='https://etherscan.io/tx/"+result['transactionHash']+"'>Etherscan</a>!"); 
 		})
