@@ -148,6 +148,7 @@
 		document.getElementById('connect').style.display = 'none'; 
 		const totalMinted = await contract.methods.totalSupply().call(); 
 		if(totalMinted < 4420) { 
+			console.log(totalMinted); 
 			enableMinting(totalMinted); 
 		}
 		else { 
