@@ -81,6 +81,9 @@
 		#mint-result { 
 			margin-top:1em; 
 		}
+		#mint-result a, #mint-result a:link { 
+			color:#fff; 
+		}
 	</style>
 </head>
 
@@ -209,19 +212,17 @@
 	}
 	
 	function showMintLoading() { 
-		document.getElementById('mint-result').style.display = 'block'; 
 		document.getElementById('mint-result').textContent = "Loading..."; 
+		document.getElementById('mint-result').style.display = 'block'; 
+		document.getElementById('mint-buttons').style.display = 'none'; 
 	}
 	
 	function showMintResult(outcome) { 
 		document.getElementById('mint-result').innerHTML = ''+outcome; 
-		document.getElementById('mint-buttons').style.display = 'none'; 
-		document.getElementById('mint-result').style.display = 'block'; 
 	}
 	
 	function showMintError(outcome) { 
 		document.getElementById('mint-result').innerHTML = ''+outcome; 
-		document.getElementById('mint-result').style.display = 'block'; 
 	}
   </script>
 
