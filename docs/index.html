@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>Plant Your Emoji Garden</title>
 	<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Merienda:wght@700&display=swap" rel="stylesheet">
@@ -55,6 +56,28 @@
 		#web3-connect { 
 			margin-bottom:1em; 
 		}
+		#mintable, #complete { 
+			min-height: 80vh;
+			justify-content: center; 
+			align-items: center; 
+			flex-direction: column; 
+		}
+		#mintable p, #complete p { 
+			width:40em; 
+			text-align:center; 
+		}
+		#progress-container{ 
+			width:20em; 
+		}
+		#mint-buttons { 
+			width:40em; 
+			display:flex;
+			justify-content:center; 
+			column-gap:1.5em; 
+		}
+		#mint-buttons .btn { 
+			height:3.6em; 
+		}
 	</style>
 </head>
 
@@ -84,6 +107,21 @@
 		give OpenSea a little while for the garden and its metadata to appear.</p>
   </div>
   
+  <div id="mintable" style="display:none">
+	<p><span id="totalSupply">0</span> of 4,420 minted so far</p>
+	<div id="mint-buttons">
+		<a href="#" id="mint-one" class="btn btn-success">Mint 1<br><span>0.01 ETH</span></a>
+		<a href="#" id="mint-two" class="btn btn-success">Mint 2<br><span>0.02 ETH</span></a>
+		<a href="#" id="mint-three" class="btn btn-success">Mint 3<br><span>0.03 ETH</span></a>
+	</div>
+	<div id="mint-result" style="display:none">&nbsp;</div>
+  </div>
+  
+  <div id="complete" style="display:none">
+	<p>4,420 of 4,420 minted so far</p>
+	<p>The Emoji Garden minting is complete! Thank you for your interest.</p>
+  </div>
+  
   <div id="footer">
 	&nbsp;
   </div>
@@ -92,13 +130,11 @@
   <script type="text/javascript">
 	var web3 = new Web3(Web3.givenProvider);
     var account = "";
-
-    const ethereumButton = document.getElementById('web3-connect');
 	
 	const emojiContract = "0xadE7f13b08f33d0307bdE61F784b507C64370f37"; 
 	const jsonInterface = [{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"mintOne","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"mintThree","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"mintTwo","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"ownerClaim","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"uint256","name":"rowNum","type":"uint256"}],"name":"row","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]; 
 	
-	ethereumButton.addEventListener('click', function(evt) {
+	document.getElementById('web3-connect').addEventListener('click', function(evt) {
 		evt.preventDefault(); 
         getAccount();
     });
@@ -108,6 +144,70 @@
 		account = accounts[0]; 
 		document.getElementById('show-account').textContent = ''+account; 
 		document.getElementById('connect').style.display = 'none'; 
+		const totalMinted = await contract.methods.totalSupply().call(); 
+		if(totalMinted < 4420) { 
+			enableMinting(); 
+		}
+		else { 
+			document.getElementById('complete').style.display = 'flex'; 
+		}
+	}
+	
+	function enableMinting() { 
+		document.getElementById('mintable').style.display = 'flex'; 
+		document.getElementById('mint-one').addEventListener('click', function(evt) { 
+			evt.preventDefault();
+			mintOne(); 
+		}); 
+		document.getElementById('mint-two').addEventListener('click', function(evt) { 
+			evt.preventDefault();
+			mintTwo(); 
+		}); 
+		document.getElementById('mint-three').addEventListener('click', function(evt) { 
+			evt.preventDefault();
+			mintThree(); 
+		}); 
+	}
+	
+	async function mintOne() { 
+		contract.methods.mintOne().send({"from":account,"value":10000000000000000}) // 0.01 ETH
+		.then(function(result){
+			showMintResult("Mint processing, check progress on <a target='_blank' href='https://etherscan.io/tx/"+result['transactionHash']+"'>Etherscan</a>!"); 
+		})
+		.catch(function(error){
+			showMintError(error["message"]); 
+		}); 
+	}
+	
+	async function mintTwo() { 
+		contract.methods.mintTwo().send({"from":account,"value":20000000000000000}) // 0.02 ETH
+		.then(function(result){
+			showMintResult("Mint processing, check progress on <a target='_blank' href='https://etherscan.io/tx/"+result['transactionHash']+"'>Etherscan</a>!"); 
+		})
+		.catch(function(error){
+			showMintError(error["message"]); 
+		}); 
+	}
+	
+	async function mintThree() { 
+		contract.methods.mintThree().send({"from":account,"value":30000000000000000}) // 0.03 ETH
+		.then(function(result){
+			showMintResult("Mint processing, check progress on <a target='_blank' href='https://etherscan.io/tx/"+result['transactionHash']+"'>Etherscan</a>!"); 
+		})
+		.catch(function(error){
+			showMintError(error["message"]); 
+		}); 
+	}
+	
+	function showMintResult(outcome) { 
+		document.getElementById('mint-result').textContent = ''+outcome; 
+		document.getElementById('mint-buttons').style.display = 'none'; 
+		document.getElementById('mint-result').style.display = 'block'; 
+	}
+	
+	function showMintResult(outcome) { 
+		document.getElementById('mint-result').textContent = ''+outcome; 
+		document.getElementById('mint-result').style.display = 'block'; 
 	}
   </script>
 
