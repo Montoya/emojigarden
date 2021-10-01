@@ -83,12 +83,13 @@
 	
 	ethereumButton.addEventListener('click', () => {
         getAccount();
+		return false; 
     });
 	
 	async function getAccount() { 
 		const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
 		account = accounts[0]; 
-		document.getElementById('show-account').text.value = ''+account; 
+		document.getElementById('show-account').textContent = ''+account; 
 		ethereumButton.style.display = 'none'; 
 	}
   </script>
