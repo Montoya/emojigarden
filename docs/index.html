@@ -206,7 +206,7 @@
 		showMintLoading(); 
 		contract.methods.mintThree().send({"from":account,"value":30000000000000000}) // 0.03 ETH
 		.then(function(result){
-			showMintResult("Planting complete, check transaction on <a target='_blank' href='https://etherscan.io/tx/"+result['transactionHash']+"'>Etherscan</a>!"); 
+			showMintResult("Planting complete, check transaction on <a target='_blank' href='https://etherscan.io/tx/"+result['transactionHash']+"'>Etherscan</a> or refresh to mint again!"); 
 		})
 		.catch(function(error){
 			showMintError(error["message"]); 
