@@ -11,7 +11,7 @@
 	<link href="emojigarden.css" rel="stylesheet">
 	<style type="text/css">
 		.container { max-width:976px; margin-top:2em; }
-		.container a, .container a:link, .container a:visited { 
+		#message a, #message a:link, #message a:visited { 
 			color:#fafafa;
 			text-decoration:underline; 
 		}
@@ -46,7 +46,7 @@
 	  <div class="columns">
 		<div id="message" class="column col-12">Loading... please wait...</div>
 		<div id="viewer" class="column col-12" style="display:none">
-		<p>Enter a token ID from 0 to <span id="total-supply-string">X</span> to view: <input type="text" id="tokenIdInput" value="1"> <a href="#" id="viewBtn" class="btn btn-primary">View</a></p>
+		<p>Enter a token ID from 0 to <span id="total-supply-string">X</span> to view: &nbsp;<input type="text" id="tokenIdInput" value="1"> <a href="#" id="viewBtn" class="btn btn-primary">View</a></p>
 		
 		<div id="garden-viewer"></div>
 		
@@ -78,6 +78,7 @@
 			totalSupply = totalMinted; 
 			document.getElementById('message').style.display = 'none'; 
 			document.getElementById('viewer').style.display = 'block'; 
+			document.getElementById('total-supply-string').textContent = ''+totalMinted; 
 			
 			document.getElementById('viewBtn').addEventListener('click', function(evt) { 
 				evt.preventDefault();
@@ -87,8 +88,12 @@
 	}); 
 	
 	function loadTokenById() { 
+		document.getElementById('viewBtn').style.visibility = 'hidden';
 		var id = parseInt(document.getElementById('tokenIdInput').value); 
-		console.log(id); 
+		contract.methods.tokenURI(id).call().then(function(result){
+			result = atob(result); 
+			console.log(result); 
+		}); 
 	}
 	
 	getSupply(); 
