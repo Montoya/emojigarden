@@ -60,7 +60,11 @@
 		#mint-result { 
 			margin-top:1em; 
 		}
-		#mint-result a, #mint-result a:link { 
+		#mint-result a, #mint-result a:link, #mint-result a:visited { 
+			color:#fff; 
+			text-decoration:underline; 
+		}
+		.footnote a, .footnote a:link, .footnote a:visited { 
 			color:#fff; 
 			text-decoration:underline; 
 		}
@@ -91,7 +95,7 @@
 		The contract for Emoji Garden has been carefully tested, but please mint at your own risk. 
 		If you want to check your garden after minting at a secondary market like OpenSea, please 
 		give OpenSea a little while for the garden and its metadata to appear.</p>
-	<p><a href="https://opensea.io/collection/emoji-garden" target="_blank">OpenSea Collection</a> | <a href="view.html" target="_blank">Emoji Garden Viewer</a></p>
+	<p class="footnote"><a href="https://opensea.io/collection/emoji-garden" target="_blank">OpenSea Collection</a> | <a href="view.html" target="_blank">Emoji Garden Viewer</a></p>
   </div>
   
   <div id="mintable" style="display:none">
@@ -102,7 +106,7 @@
 		<a href="#" id="mint-three" class="btn btn-success">Plant 3<br><span>0.03 ETH</span></a>
 	</div>
 	<p id="mint-result" style="display:none">&nbsp;</p>
-	<p id="mint-footnote"><a href="https://opensea.io/collection/emoji-garden" target="_blank">OpenSea Collection</a> | <a href="view.html" target="_blank">Emoji Garden Viewer</a></p>
+	<p id="mint-footnote" class="footnote"><a href="https://opensea.io/collection/emoji-garden" target="_blank">OpenSea Collection</a> | <a href="view.html" target="_blank">Emoji Garden Viewer</a></p>
   </div>
   
   <div id="complete" style="display:none">
