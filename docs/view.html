@@ -94,7 +94,6 @@
 			// need to remove data:application/json;base64, at start of string 
 			var jsonResult = atob(result.slice(29)); 
 			var encodedImage = jsonResult.image; 
-			var imageData = atob(encodedImage.slice(26)); 
 			var imageObject = document.createElement('object'); 
 			imageObject.type = "image/svg+xml"; 
 			imageObject.data = encodedImage; 
