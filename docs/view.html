@@ -91,12 +91,13 @@
 	}); 
 	
 	function loadTokenById() { 
-		document.getElementById('viewBtn').style.visibility = 'hidden';
 		var id = parseInt(document.getElementById('tokenIdInput').value); 
 		if(id > 0 && id < totalSupply || id > 4420 && id < 4445) { } 
 		else { 
 			document.getElementById('garden-viewer').textContent = 'Invalid ID, please try again';
+			return; 
 		}
+		document.getElementById('viewBtn').style.visibility = 'hidden';
 		contract.methods.tokenURI(id).call().then(function(result){
 			// need to remove data:application/json;base64, at start of string 
 			var jsonResult = JSON.parse(atob(result.slice(29))); 
