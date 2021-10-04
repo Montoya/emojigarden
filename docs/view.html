@@ -10,9 +10,10 @@
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Itim:wght@400&display=swap" rel="stylesheet">
 	<link href="emojigarden.css" rel="stylesheet">
 	<style type="text/css">
-		.container { max-width:960px; }
+		.container { max-width:980px; }
 		.container a { 
 			color:#fafafa;
+			text-decoration:underline; 
 		}
 	</style>
 </head>
@@ -56,6 +57,7 @@
 			document.getElementById('message').innerHTML = 'No gardens have been planted yet. <a href="index.html">Plant one now!</a>';
 		}
 		else { 
+			document.getElementById('message').style.display = 'none'; 
 			document.getElementById('viewer').style.display = 'block'; 
 		}
 	}); 
