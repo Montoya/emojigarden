@@ -47,15 +47,14 @@
 	
 	var contract = new web3.eth.Contract(jsonInterface, emojiContract);
 	
-	async function getSupply() { 
-		const totalMinted = await contract.methods.totalSupply().call(); 
+	contract.methods.totalSupply().call().then(function(totalMinted){ 
 		if(totalMinted < 1) { 
 			document.getElementById('message').innerHTML = 'No gardens have been planted yet. <a href="index.html">Plant one now!</a>';
 		}
 		else { 
 			document.getElementById('viewer').style.display = 'block'; 
 		}
-	}
+	}); 
 	
 	getSupply(); 
   </script>
