@@ -92,7 +92,7 @@
 		var id = parseInt(document.getElementById('tokenIdInput').value); 
 		contract.methods.tokenURI(id).call().then(function(result){
 			// need to remove data:application/json;base64, at start of string 
-			var jsonResult = atob(result.slice(29)); 
+			var jsonResult = JSON.parse(atob(result.slice(29))); 
 			var encodedImage = jsonResult.image; 
 			var imageObject = document.createElement('object'); 
 			imageObject.type = "image/svg+xml"; 
