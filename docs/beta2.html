@@ -138,7 +138,7 @@
 		web3 = new Web3(window.ethereum); 
 		contract = new web3.eth.Contract(jsonInterface, emojiContract);
 		const accounts = await window.ethereum.send('eth_requestAccounts');
-		account = accounts[0]; 
+		account = accounts.result[0]; 
 		document.getElementById('show-account').textContent = ''+account; 
 		document.getElementById('connect').style.display = 'none'; 
 		const totalMinted = await contract.methods.totalSupply().call(); 
