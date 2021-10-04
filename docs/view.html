@@ -49,7 +49,7 @@
 	  <div class="columns">
 		<div id="message" class="column col-12">Loading... please wait...</div>
 		<div id="viewer" class="column col-12" style="display:none">
-		<p>Enter a token ID from 0 to <span id="total-supply-string">X</span> to view: &nbsp;<input type="text" id="tokenIdInput" value="1"> <a href="#" id="viewBtn" class="btn btn-success">View</a></p>
+		<p>Enter a token ID from 1 to <span id="total-supply-string">X</span> to view: &nbsp;<input type="text" id="tokenIdInput" value="1"> <a href="#" id="viewBtn" class="btn btn-success">View</a></p>
 		
 		<div id="garden-viewer"></div>
 		
@@ -92,7 +92,7 @@
 	
 	function loadTokenById() { 
 		var id = parseInt(document.getElementById('tokenIdInput').value); 
-		if(id > 0 && id < totalSupply || id > 4420 && id < 4445) { } 
+		if(id > 0 && id <= totalSupply || id > 4420 && id < 4445) { } 
 		else { 
 			document.getElementById('garden-viewer').textContent = 'Invalid ID, please try again';
 			return; 
