@@ -49,9 +49,11 @@
 	  <div class="columns">
 		<div id="message" class="column col-12">Loading... please wait...</div>
 		<div id="viewer" class="column col-12" style="display:none">
-		<p>Enter a token ID from 1 to <span id="total-supply-string">X</span> to view: &nbsp;<input type="text" id="tokenIdInput" value="1"> <a href="#" id="viewBtn" class="btn btn-success">View</a></p>
+			<p>Enter a token ID from 1 to <span id="total-supply-string">X</span> to view: &nbsp;<input type="text" id="tokenIdInput" value="1"> <a href="#" id="viewBtn" class="btn btn-success">View</a></p>
 		
-		<div id="garden-viewer"></div>
+			<div id="garden-viewer"></div>
+			
+			<div id="garden-image"></div>
 		
 		</div>
 	  </div>
@@ -102,12 +104,25 @@
 			// need to remove data:application/json;base64, at start of string 
 			var jsonResult = JSON.parse(atob(result.slice(29))); 
 			var encodedImage = jsonResult.image; 
+			
 			var imageObject = document.createElement('object'); 
 			imageObject.type = "image/svg+xml"; 
 			imageObject.data = encodedImage; 
 			document.getElementById('garden-viewer').textContent = '';
 			document.getElementById('garden-viewer').appendChild(imageObject); 
 			document.getElementById('viewBtn').style.visibility = 'visible';
+			
+			const imageCanvas = document.createElement('canvas'); 
+			imageCanvas.width = encodedImage.clientWidth; 
+			imageCanvas.height = encodedImage.clientHeight; 
+			const canvasCtx = imageCanvas.getContext('2d'); 
+			canvasCtx.drawImage(encodedImage,0,0); 
+			const imgData = canvas.toDataURL('image/png'); 
+			var imageTag = document.createElement('img'); 
+			imageTag.width = imageCanvas.width; 
+			imageTag.height = imageCanvas.height; 
+			document.getElementById('garden-image').textContent = ''; 
+			document.getElementById('garden-image').appendChild(imageTag); 
 		}); 
 	}
   </script>
