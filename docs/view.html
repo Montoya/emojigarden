@@ -116,7 +116,9 @@
 			imageCanvas.width = imageObject.width; 
 			imageCanvas.height = imageObject.height; 
 			const canvasCtx = imageCanvas.getContext('2d'); 
-			canvasCtx.drawImage(imageObject.data,0,0); 
+			var imageSVGData = atob(encodedImage.slice(26)); 
+			console.log(imageSVGData); 
+			canvasCtx.drawImage(imageSVGData,0,0); 
 			const imgData = imageCanvas.toDataURL('image/png'); 
 			var imageTag = document.createElement('img'); 
 			imageTag.width = imageCanvas.width; 
