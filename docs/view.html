@@ -121,7 +121,7 @@
 				const canvasCtx = imageCanvas.getContext('2d'); 
 				canvasCtx.drawImage(imageTag, 0, 0); 
 				var pngData = imageCanvas.toDataURL('image/png'); 
-				var pngTag = document.document.createElement('img'); 
+				var pngTag = document.createElement('img'); 
 				pngTag.width = '360';
 				pngTag.height = '360';
 				pngTag.src = pngData; 
