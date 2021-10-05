@@ -16,7 +16,7 @@
 			text-decoration:underline; 
 		}
 		
-		#garden-viewer { 
+		#garden-viewer, #garden-image { 
 			width:360px;
 			height:360px;
 			border-radius:12px;
@@ -24,10 +24,6 @@
 		}
 		#tokenIdInput { 
 			width:3em; 
-		}
-		#garden-viewer object { 
-			width:360px;
-			height:360px;
 		}
 	</style>
 </head>
@@ -97,6 +93,8 @@
 				evt.preventDefault();
 				loadTokenById(); 
 			}); 
+			
+			loadTokenById(); 
 		}
 	}); 
 	
@@ -139,6 +137,8 @@
 			console.log(result); 
 		}); 
 	}
+	
+	
   </script>
 
 </body>
