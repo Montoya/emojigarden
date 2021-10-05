@@ -21,6 +21,7 @@
 			height:360px;
 			border-radius:12px;
 			overflow:hidden; 
+			margin-bottom:1em; 
 		}
 		#tokenIdInput { 
 			width:3em; 
@@ -134,7 +135,7 @@
 			document.getElementById('viewBtn').style.visibility = 'visible';
 		}); 
 		contract.methods.emojiString(id).call().then(function(result){
-			console.log(result); 
+			document.getElementById('emoji-string').textContent = ''+result; 
 		}); 
 	}
 	
