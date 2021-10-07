@@ -70,6 +70,7 @@
 	
 	async function fetchEmojiString(id) { 
 		contract.methods.emojiString(id).call().then(function(result) { 
+			console.log(result); 
 			return result;  
 		}); 
 	}
