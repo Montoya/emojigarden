@@ -64,7 +64,7 @@
 		
 		for(var i = 1; i < supply; i++) { 
 			let emojiString = contract.methods.emojiString(i).call().then(function(result) { 
-				resolve(result);  
+				return result;  
 			});
 			retrievedGardens[i] = '' + await emojiString; 
 		}
