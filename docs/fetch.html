@@ -54,24 +54,23 @@
 	
 	var contract = new web3.eth.Contract(jsonInterface, emojiContract);
 	
-	var totalSupply = 0; 
 	var retrievedGardens = []; 
 	
-	(async () => { 
-		contract.methods.totalSupply().call().then(function(totalMinted){ 
-			for(var i = 1; i <= totalMinted; i++){
-				retrievedGardens[i] = ''+ fetchEmojiString(i); 
-			}
-		
-			console.log(retrievedGardens); 
-		
-			document.getElementById('output').value = JSON.stringify(retrievedGardens); 
-		});
+	contract.methods.totalSupply().call().then(function(totalMinted){ 
+		fetchAll(totalMinted); 
 	}); 
 	
+	async function fetchAll(supply) { 
+		for(var i = 1; i < supply; i++) { 
+			retrievedGardens[i] = '' + await fetchEmojiString(i); 
+		}
+		console.log(retrievedGardens); 
+		document.getElementById('output').value = JSON.stringify(retrievedGardens); 
+	}
+	
 	async function fetchEmojiString(id) { 
-		contract.methods.emojiString(id).call().then(function(result) { 
-			return result; 
+		return contract.methods.emojiString(id).call().then(function(result) { 
+			resolve(result); 
 		}); 
 	}
 	
