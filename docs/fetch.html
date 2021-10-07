@@ -69,8 +69,8 @@
 	}
 	
 	async function fetchEmojiString(id) { 
-		return contract.methods.emojiString(id).call().then(function(result) { 
-			resolve(result); 
+		contract.methods.emojiString(id).call().then(function(result) { 
+			return result;  
 		}); 
 	}
 	
