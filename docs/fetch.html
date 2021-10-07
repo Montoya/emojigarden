@@ -59,7 +59,7 @@
 	
 	contract.methods.totalSupply().call().then(function(totalMinted){ 
 		for(var i = 1; i <= totalMinted; i++){
-			await retrievedGardens[i] = fetchEmojiString(i); 
+			retrievedGardens[i] = fetchEmojiString(i); 
 		}
 		
 		console.log(retrievedGardens); 
@@ -69,7 +69,7 @@
 	
 	async function fetchEmojiString(id) { 
 		contract.methods.emojiString(id).call().then(function(result) { 
-			return ''+result; 
+			return await result; 
 		}); 
 	}
 	
