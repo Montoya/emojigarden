@@ -63,10 +63,11 @@
 	async function fetchAll(supply) { 
 		
 		for(var i = 1; i < supply; i++) { 
-			let emojiString = contract.methods.emojiString(i).call().resolve(function(result) { 
+			let emojiString = contract.methods.emojiString(i).call().then(function(result) { 
 				return result;  
 			});
 			retrievedGardens[i] = '' + await emojiString; 
+			document.getElementById('message').textContent = 'Loaded '+i; 
 		}
 		
 		document.getElementById('output').value = JSON.stringify(retrievedGardens); 
