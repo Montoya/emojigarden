@@ -82,7 +82,7 @@
 			var emojiResult = {id:i}; 
 			var emojiStringResult = ''+await emojiString; 
 			emojiResult.emoji = emojiStringToArray(emojiStringResult); 
-			retrievedGardens[] = emojiResult; 
+			retrievedGardens.push(emojiResult); 
 			document.getElementById('message').textContent = 'Loaded '+i; 
 		}
 		
