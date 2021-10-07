@@ -57,14 +57,16 @@
 	var totalSupply = 0; 
 	var retrievedGardens = []; 
 	
-	contract.methods.totalSupply().call().then(function(totalMinted){ 
-		for(var i = 1; i <= totalMinted; i++){
-			retrievedGardens[i] = ''+ await fetchEmojiString(i); 
-		}
+	(async () => { 
+		contract.methods.totalSupply().call().then(function(totalMinted){ 
+			for(var i = 1; i <= totalMinted; i++){
+				retrievedGardens[i] = ''+ await fetchEmojiString(i); 
+			}
 		
-		console.log(retrievedGardens); 
+			console.log(retrievedGardens); 
 		
-		document.getElementById('output').value = JSON.stringify(retrievedGardens); 
+			document.getElementById('output').value = JSON.stringify(retrievedGardens); 
+		});
 	}); 
 	
 	async function fetchEmojiString(id) { 
