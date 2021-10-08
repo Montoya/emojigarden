@@ -24,7 +24,7 @@ a.bright, a.bright:link, a.bright:visited {
 	text-decoration:underline; 
 }
 .navbar-section a, .navbar-section a:link, .navbar-section a:focus, .navbar-section a:hover, .navbar-section a:visited { 
-	color:#fafafa;
+	color:#fafafa !important;
 }
 
 #footer { 
