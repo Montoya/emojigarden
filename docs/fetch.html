@@ -75,7 +75,7 @@
 	
 	async function fetchAll(supply) { 
 		
-		for(var i = 1; i < supply; i++) { 
+		for(var i = 1; i <= supply; i++) { 
 			let emojiString = contract.methods.emojiString(i).call().then(function(result) { 
 				return result;  
 			});
@@ -83,27 +83,12 @@
 			var emojiStringResult = ''+await emojiString; 
 			emojiResult.emoji = emojiStringToArray(emojiStringResult); 
 			retrievedGardens.push(emojiResult); 
-			document.getElementById('message').textContent = 'Loaded '+i; 
+			document.getElementById('message').textContent = 'Loaded '+i+' of '+supply; 
 		}
 		
 		document.getElementById('output').value = JSON.stringify(retrievedGardens); 
 	
 	}
-	/*
-	async function fetchAll(supply) { 
-		for(var i = 1; i < supply; i++) { 
-			retrievedGardens[i] = '' + await fetchEmojiString(i); 
-		}
-		console.log(retrievedGardens); 
-		document.getElementById('output').value = JSON.stringify(retrievedGardens); 
-	}
-	
-	async function fetchEmojiString(id) { 
-		contract.methods.emojiString(id).call().then(function(result) { 
-			return result;  
-		}); 
-	}
-	*/
   </script>
 
 </body>
