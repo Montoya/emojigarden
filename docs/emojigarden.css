@@ -14,7 +14,10 @@ body {
 .navbar-brand { 
 	font-family: 'Itim', cursive; 
 	font-size:28px !important; 
-	margin-top:-0.4em; 
+	margin-top:-0.2em; 
+}
+.navbar-brand.mr-2 { 
+	margin-right:1rem !important; 
 }
 #footer { 
 	height:84px;
