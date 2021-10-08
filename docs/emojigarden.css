@@ -23,7 +23,7 @@ a.bright, a.bright:link, a.bright:visited {
 	color:#fafafa;
 	text-decoration:underline; 
 }
-.navbar-section a, .navbar-section a:link, .navbar-section a:focus, .navbar-section a:hover, .navbar-section a:visited { 
+.navbar-section a.btn-link, .navbar-section a.btn-link:link, .navbar-section a.btn-link:focus, .navbar-section a.btn-link:hover, .navbar-section a.btn-link:visited { 
 	color:#fafafa !important;
 }
 
