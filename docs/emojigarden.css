@@ -19,6 +19,14 @@ body {
 .navbar-brand.mr-2 { 
 	margin-right:1rem !important; 
 }
+a.bright, a.bright:link, a.bright:visited { 
+	color:#fafafa;
+	text-decoration:underline; 
+}
+.navbar-section a, .navbar-section a:link, .navbar-section a:focus, .navbar-section a:hover, .navbar-section a:visited { 
+	color:#fafafa;
+}
+
 #footer { 
 	height:84px;
 	width:100%;
