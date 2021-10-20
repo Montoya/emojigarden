@@ -35,7 +35,7 @@
 	<header class="navbar">
 	  <section class="navbar-section">
 		<span class="navbar-brand mr-2">Emoji Garden Viewer</span>
-		<a href="index.html" class="btn btn-link bright">Mint</a>
+		<a href="index.html" class="btn btn-link bright">Home</a>
 		<a href="rarity.html" class="btn btn-link bright">Rarity</a>
 		<a href="https://opensea.io/collection/emoji-garden" class="btn btn-link bright">OpenSea</a>
 		<a href="https://twitter.com/EmojiGardenNFT" class="btn btn-link bright">Twitter</a>
@@ -59,7 +59,7 @@
 				</div>
 				<div class="column col-12">
 					<p>Emoji text string (for building): <span id="emoji-string">&nbsp;</span></p>
-					<p>Like what you see? <a class="bright" href="index.html">Plant your own garden now!</a></p>
+					<p><a id="openSeaLink" class="bright" href="https://opensea.io/assets/0x690dbdf6bb1712f01b34e80c25553db869df8bf9/1">View on OpenSea</a></p>
 				</div>
 			</div>
 		</div>
@@ -109,6 +109,7 @@
 			return; 
 		}
 		document.getElementById('viewBtn').style.visibility = 'hidden';
+		document.getElementById('openSeaLink').href = "https://opensea.io/assets/0x690dbdf6bb1712f01b34e80c25553db869df8bf9/" + id; 
 		contract.methods.tokenURI(id).call().then(function(result){
 			// need to remove data:application/json;base64, at start of string 
 			var jsonResult = JSON.parse(atob(result.slice(29))); 
