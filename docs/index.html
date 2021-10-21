@@ -86,19 +86,22 @@
 	</header>
   </div>
   
-  <div id="connect">
+   <div id="connect">
 	<p>Emoji Garden is an on-chain NFT featuring randomly generated assortments of emoji. 
-		No files, no IPFS, just beautiful 🌷 living on Ethereum. 
-		409 gardens were minted for 0.01 ETH each. While the total number is lower than what was planned, 
-		the community voted to end the minting period and finalize the collection. 409 and not one more!</p>
+		No files, no IPFS, just beautiful 🌷 you can plant on Ethereum. 
+		4,420 gardens are available to claim for 0.01 ETH each. 
+		To mint, connect your Web3 provider using the button below.</p>
+	<a href="#" id="web3-connect" class="btn btn-primary">Connect Metamask</a>
 	<p>Each Emoji Garden is for you to use and build upon. 
 		Future NFT projects may use Emoji Garden as a basis for generative art, games, and more. 
-		The contract for Emoji Garden has been carefully tested, but please mint at your own risk.</p>
-	<p class="footnote"><a href="https://medium.com/@millyverse/introducing-emoji-garden-nft-56a7f6dd4c92" target="_blank">Learn More</a></p>
+		The contract for Emoji Garden has been carefully tested, but please mint at your own risk. 
+		If you want to check your garden after minting at a secondary market like OpenSea, please 
+		give OpenSea a little while for the garden and its metadata to appear.</p>
+	<p class="footnote"><a href="https://opensea.io/collection/emoji-garden" target="_blank">OpenSea Collection</a> | <a href="view.html" target="_blank">Emoji Garden Viewer</a> | <a href="https://medium.com/@millyverse/introducing-emoji-garden-nft-56a7f6dd4c92" target="_blank">Learn More</a></p>
   </div>
-  <!-- 
+  
   <div id="mintable" style="display:none">
-	<p><span id="total-minted">0</span> of 4,420 planted so far</p>
+	<p><span id="total-minted">409</span> of 4,420 planted so far</p>
 	<div id="mint-buttons">
 		<a href="#" id="mint-one" class="btn btn-success">Plant 1<br><span>0.01 ETH</span></a>
 		<a href="#" id="mint-two" class="btn btn-success">Plant 2<br><span>0.02 ETH</span></a>
@@ -111,11 +114,105 @@
   <div id="complete" style="display:none">
 	<p>4,420 of 4,420 planted so far</p>
 	<p>The Emoji Garden planting is complete! Thank you for your interest.</p>
-  </div> -->
+  </div>
   
   <div id="footer">
 	&nbsp;
   </div>
+  
+  <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+  <script type="text/javascript">
+	var web3 = new Web3(Web3.givenProvider);
+    var account = "";
+	
+	const emojiContract = "0x690dBdf6bB1712f01b34e80c25553DB869dF8Bf9"; 
+	const jsonInterface = [{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"mintOne","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"mintThree","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"mintTwo","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"ownerClaim","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"priceValue","type":"uint256"}],"name":"ownerSetPrice","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"emoji1","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"emoji2","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"emoji3","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"emoji4","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"emoji5","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"emoji6","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"emoji7","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"emoji8","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"emoji9","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"emojiString","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]; 
+	
+	var contract = new web3.eth.Contract(jsonInterface, emojiContract);
+	
+	document.getElementById('web3-connect').addEventListener('click', function(evt) {
+		evt.preventDefault(); 
+        getAccount();
+    });
+	
+	async function getAccount() { 
+		const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+		account = accounts[0]; 
+		document.getElementById('show-account').textContent = ''+account; 
+		document.getElementById('connect').style.display = 'none'; 
+		const totalMinted = await contract.methods.totalSupply().call(); 
+		if(totalMinted < 4420) { 
+			enableMinting(totalMinted); 
+		}
+		else { 
+			document.getElementById('complete').style.display = 'flex'; 
+		}
+	}
+	
+	function enableMinting(totalMinted) { 
+		document.getElementById('total-minted').textContent = totalMinted; 
+		document.getElementById('mintable').style.display = 'flex'; 
+		document.getElementById('mint-one').addEventListener('click', function(evt) { 
+			evt.preventDefault();
+			mintOne(); 
+		}); 
+		document.getElementById('mint-two').addEventListener('click', function(evt) { 
+			evt.preventDefault();
+			mintTwo(); 
+		}); 
+		document.getElementById('mint-three').addEventListener('click', function(evt) { 
+			evt.preventDefault();
+			mintThree(); 
+		}); 
+	}
+	
+	async function mintOne() { 
+		showMintLoading(); 
+		contract.methods.mintOne().send({"from":account,"value":10000000000000000}) // 0.01 ETH
+		.then(function(result){
+			showMintResult("Planting complete, check transaction on <a target='_blank' href='https://etherscan.io/tx/"+result['transactionHash']+"'>Etherscan</a>!"); 
+		})
+		.catch(function(error){
+			showMintError(error["message"]); 
+		}); 
+	}
+	
+	async function mintTwo() { 
+		showMintLoading(); 
+		contract.methods.mintTwo().send({"from":account,"value":20000000000000000}) // 0.02 ETH
+		.then(function(result){
+			showMintResult("Planting complete, check transaction on <a target='_blank' href='https://etherscan.io/tx/"+result['transactionHash']+"'>Etherscan</a>!"); 
+		})
+		.catch(function(error){
+			showMintError(error["message"]); 
+		}); 
+	}
+	
+	async function mintThree() { 
+		showMintLoading(); 
+		contract.methods.mintThree().send({"from":account,"value":30000000000000000}) // 0.03 ETH
+		.then(function(result){
+			showMintResult("Planting complete, check transaction on <a target='_blank' href='https://etherscan.io/tx/"+result['transactionHash']+"'>Etherscan</a> or refresh to mint again!"); 
+		})
+		.catch(function(error){
+			showMintError(error["message"]); 
+		}); 
+	}
+	
+	function showMintLoading() { 
+		document.getElementById('mint-result').textContent = "Loading..."; 
+		document.getElementById('mint-result').style.display = 'block'; 
+		document.getElementById('mint-buttons').style.display = 'none'; 
+	}
+	
+	function showMintResult(outcome) { 
+		document.getElementById('mint-result').innerHTML = ''+outcome; 
+	}
+	
+	function showMintError(outcome) { 
+		document.getElementById('mint-result').innerHTML = ''+outcome; 
+	}
+  </script>
   
 </body>
 </html>
